@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Good!</title>
+		<style>
+			#spitaro{
+				transition: left 0.5s ease;
+				position: relative;
+				left: 0;
+				filter:url('#goo');
+			}
+			svg{
+				width: 0;
+				height: 0;
+			}
+			#listdir{
+				
+			}
+		</style>
+	</head>
+	<body>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0" result="blur" />
+     <!-- <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />-->
+      <feBlend in="SourceGraphic" in2="blur"/>
+  	</filter>
+  </defs>
+</svg>
+	<center>
+		<h1>Welcome to spitaro.cn</h1>
+		<!--<img src="./img/lightingspitaro.png" alt="" />-->
+		<img id="spitaro" src="img/ok_little3.png" alt=""/>
+		<div id="listdir">
+			<a href="shudu.html"><li>shudu</li></a>
+			<li>空</li>
+			<li>空</li>
+			<li>空</li>
+		</div>
+	</center>
+		
+</div>
+<script type="text/javascript">
+	//animation 包装 
+	var movede=false;
+	function startlight(){
+		var lightdii=0.1;
+		var tim=0;
+		var min=0;
+		var gaus=document.getElementsByTagName("feGaussianBlur")[0];
+		(function light(){
+			tim+=lightdii;
+			if(tim>=5){
+				tim=5;
+				lightdii=-lightdii;
+				if(!movede){
+					movelogol();
+					min=2;
+				}
+			}
+			if(tim<min){
+				tim=min;
+				lightdii=-lightdii;
+			}
+			gaus.setAttribute("stdDeviation",tim+"");
+			requestAnimationFrame(light,false);
+		}());
+	}
+	function movelogol(){
+		movede=true;
+		var spitaro=document.getElementById("spitaro");
+		spitaro.style.left="-200px";
+//		startlight();
+	}
+	setTimeout(startlight,1000);
+</script>
+
+	</body>
+</html>
